@@ -1,5 +1,5 @@
 # Setup Steps
 In your terminal, type:
 ```
-chmod 755 scripts/setup.sh
+chmod -R 755 scripts
 ```
