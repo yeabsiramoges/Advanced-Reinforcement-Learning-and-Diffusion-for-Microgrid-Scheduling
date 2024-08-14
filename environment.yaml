@@ -43,4 +43,5 @@ dependencies:
       - requests==2.32.3
       - rpds-py==0.20.0
       - urllib3==2.2.2
+      - -e .
 prefix: /opt/miniconda3/envs/rldiff
