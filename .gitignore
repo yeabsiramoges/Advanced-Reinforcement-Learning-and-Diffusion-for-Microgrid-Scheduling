@@ -2,6 +2,7 @@
 .conda
 .env
 .pytest_cache
+__pycache__
 
 # Data
 data/*

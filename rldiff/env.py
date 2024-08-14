@@ -2,7 +2,6 @@ import numpy as np
 import pandas as pd
 import gymnasium as gym
 
-from pydantic import BaseModel
 from rldiff.state import State
 from rldiff.action import Action
 from random import randrange, seed
@@ -13,7 +12,7 @@ from rldiff.exception import InvalidRenderModeException
 from typing import Any, Dict, List, Optional, Tuple, cast
 
 
-class RyeEnv(gym.Env, BaseModel):
+class RyeEnv(gym.Env):
     """Simulator for microgrid dynamics in Rye Case Study.
 
     Attributes:
@@ -140,7 +139,7 @@ class RyeEnv(gym.Env, BaseModel):
             grid_import_peak=0,
         )
 
-        self._state_space_min = State(
+        self._state_space_max = State(
             consumption=self._measured_consumption_data.max(),
             wind_production=self._measured_wind_production_data.max(),
             photovoltaic_production=self._measured_photovoltaic_production_data.max(),
@@ -160,7 +159,7 @@ class RyeEnv(gym.Env, BaseModel):
 
         # Start and end dates
         self._start_time_data = data.index.min()
-        self._start_time_data = data.index.max()
+        self._end_time_data = data.index.max()
 
         self.reset()
 
@@ -210,6 +209,7 @@ class RyeEnv(gym.Env, BaseModel):
         # Setting time attributes
         if start_time is None:
             delta = (self._end_time_data - self._episode_length) - self._start_time_data
+            print(self._start_time_data, self._end_time_data)
             random_seconds = randrange(delta.days * 24 * 30 * 30 + delta.seconds)
             random_hours = int(random_seconds / 3600)
             self._time = self._start_time_data + timedelta(hours=random_hours)
@@ -396,7 +396,7 @@ class RyeEnv(gym.Env, BaseModel):
 
         # Update info
         info = InfoDictionary(
-            {
+            info={
                 "state": new_state,
                 "action": new_action,
                 "time": self._time,

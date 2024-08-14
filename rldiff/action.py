@@ -1,11 +1,10 @@
 import numpy as np
 
-from pydantic import BaseModel
 from dataclasses import dataclass
 
 
 @dataclass
-class Action(BaseModel):
+class Action:
     """Action vector.
 
     Args:
