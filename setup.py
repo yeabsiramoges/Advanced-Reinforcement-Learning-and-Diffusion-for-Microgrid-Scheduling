@@ -8,6 +8,7 @@ load_dotenv()
 PROJECT_NAME = os.getenv("PROJECT_NAME")
 PROJECT_VERSION = os.getenv("PROJECT_VERSION")
 
+
 setup(
     name=PROJECT_NAME,
     version=PROJECT_VERSION,
@@ -19,18 +20,7 @@ setup(
     include_package_data=True,
     zip_safe=False,
     packages=find_packages("rldiff"),
-    install_requires=[
-        "gymnasium",
-        "matplotlib",
-        "pandas"
-    ],
-    extra_require={
-        "dev": [
-            "black",
-            "pytest",
-            "isort",
-            "tox-conda"
-        ]
-    }
-    python_requires=">3.8"
+    install_requires=["gymnasium", "matplotlib", "pandas"],
+    extra_require={"dev": ["black", "pytest", "isort", "tox-conda"]},
+    python_requires=">3.8",
 )
