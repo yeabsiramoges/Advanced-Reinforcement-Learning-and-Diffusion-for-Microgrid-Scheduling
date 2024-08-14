@@ -1,0 +1,8 @@
+# Generated Files
+.conda
+.env
+.pytest_cache
+
+# Data
+data/*
+!data/README.md
