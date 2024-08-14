@@ -26,7 +26,7 @@ class State(BaseModel):
     hydrogen_storage: float
     grid_import: float
     grid_import_peak: float
-    spot_market_proce: float
+    spot_market_price: float
 
     @property
     def vector(self) -> np.ndarray:
@@ -54,5 +54,5 @@ class State(BaseModel):
             hydrogen_storage=state.item(4),
             grid_import=state.item(5),
             grid_import_peak=state.item(6),
-            spot_market_proce=state.item(7),
+            spot_market_price=state.item(7),
         )

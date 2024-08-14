@@ -1,16 +1,12 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
-from .state import State
-from .action import Action
 from datetime import datetime
 from pydantic import BaseModel
 from dataclasses import dataclass
-from typing import Dict, List, Union, cast
+from typing import Dict, List, cast
 
-
-class InfoDictionary(BaseModel):
-    info: Dict[str, Union[State, Action, float, datetime]]
+from rldiff.type_models import InfoDictionary
 
 
 @dataclass
