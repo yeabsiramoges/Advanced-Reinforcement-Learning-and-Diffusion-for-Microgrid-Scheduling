@@ -2,7 +2,12 @@
 .conda
 .env
 .pytest_cache
+__pycache__
+rldiff.egg-info
 
 # Data
 data/*
 !data/README.md
+
+# Large Files
+pymgrid.ipynb

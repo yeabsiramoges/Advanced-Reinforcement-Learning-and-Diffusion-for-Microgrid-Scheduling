@@ -1,3 +1,4 @@
 # Code Environment
-conda env export > rldiff.yml
+cd ../../
+conda env export > environment.yaml
 pip list --format=freeze > requirements.txt

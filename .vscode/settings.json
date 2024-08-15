@@ -1,9 +1,14 @@
 {
-    "python.testing.pytestArgs": [
-        "."
-    ],
     "python.testing.unittestEnabled": false,
     "python.testing.pytestEnabled": true,
     "python.analysis.typeCheckingMode": "off",
-    "python.analysis.autoImportCompletions": true,
+    "python.analysis.autoImportCompletions": false,
+    "python.envFile": "${workspaceFolder}/.env",
+    "python.testing.pytestPath": "/opt/miniconda3/envs/rldiff/bin/pytest",
+    "python.testing.pytestArgs": [
+        "--rootdir","${workspaceFolder}"
+    ],
+    "python.analysis.extraPaths": [
+        "."
+    ],
 }

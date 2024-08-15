@@ -1,11 +1,10 @@
 import numpy as np
 
-from pydantic import BaseModel
 from dataclasses import dataclass
 
 
 @dataclass
-class State(BaseModel):
+class State:
     """State vector.
 
     Args:
@@ -26,7 +25,7 @@ class State(BaseModel):
     hydrogen_storage: float
     grid_import: float
     grid_import_peak: float
-    spot_market_proce: float
+    spot_market_price: float
 
     @property
     def vector(self) -> np.ndarray:
@@ -39,7 +38,7 @@ class State(BaseModel):
                 self.hydrogen_storage,
                 self.grid_import,
                 self.grid_import_peak,
-                self.spot_market_proce,
+                self.spot_market_price,
             ],
             dtype=np.float64,
         )
@@ -54,5 +53,5 @@ class State(BaseModel):
             hydrogen_storage=state.item(4),
             grid_import=state.item(5),
             grid_import_peak=state.item(6),
-            spot_market_proce=state.item(7),
+            spot_market_price=state.item(7),
         )
