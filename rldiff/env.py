@@ -6,8 +6,8 @@ from rldiff.state import State
 from rldiff.action import Action
 from random import randrange, seed
 from datetime import datetime, timedelta
-from rldiff.util import get_hour_resolution
 from rldiff.type_models import InfoDictionary
+from rldiff.util import get_hour_resolution, preprocess
 from rldiff.exception import InvalidRenderModeException
 from typing import Any, Dict, List, Optional, Tuple, cast
 
@@ -92,7 +92,11 @@ class RyeEnv(gym.Env):
             grid_tarrif
             peak_grid_tarrif
         """
+
         self.seed(random_seed)
+
+        # Preprocess data
+        data = preprocess(data)
 
         # Metadata for Gymnasium render-function
         self.metadata = {"render.modes": ["ansi"]}
@@ -157,9 +161,10 @@ class RyeEnv(gym.Env):
             dtype=np.float64,
         )
 
-        # Start and end dates
-        self._start_time_data = data.index.min()
-        self._end_time_data = data.index.max()
+        # Start and end dates: format example -> 2020-01-01 13:00:00
+        datetime_format = "%Y-%m-%d %H:%M:%S"
+        self._start_time_data = datetime.strptime(data.time.min(), datetime_format)
+        self._end_time_data = datetime.strptime(data.time.max(), datetime_format)
 
         self.reset()
 
@@ -209,7 +214,6 @@ class RyeEnv(gym.Env):
         # Setting time attributes
         if start_time is None:
             delta = (self._end_time_data - self._episode_length) - self._start_time_data
-            print(self._start_time_data, self._end_time_data)
             random_seconds = randrange(delta.days * 24 * 30 * 30 + delta.seconds)
             random_hours = int(random_seconds / 3600)
             self._time = self._start_time_data + timedelta(hours=random_hours)
@@ -219,6 +223,7 @@ class RyeEnv(gym.Env):
         self._episode_end_time = self._time + self._episode_length
 
         # Initial State
+
         state = State(
             consumption=self._measured_consumption_data.loc[self._time],
             wind_production=self._measured_wind_production_data.loc[self._time],

@@ -8,4 +8,7 @@
     "python.testing.pytestArgs": [
         "--rootdir","${workspaceFolder}"
     ],
+    "python.analysis.extraPaths": [
+        "."
+    ],
 }

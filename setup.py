@@ -16,7 +16,7 @@ setup(
     author="MIT EEGS Microgrid",
     author_email="eegs-microgrid@mit.edu",
     url="https://github.com/yeabsiramoges/Advanced-Reinforcement-Learning-and-Diffusion-for-Microgrid-Scheduling",
-    package_data={"": "rldiff"},
+    package_data={"": ["rldiff"]},
     include_package_data=True,
     zip_safe=False,
     packages=find_packages("rldiff"),

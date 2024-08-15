@@ -2,7 +2,6 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 from datetime import datetime
-from pydantic import BaseModel
 from dataclasses import dataclass
 from typing import Dict, List, cast
 
@@ -10,7 +9,7 @@ from rldiff.type_models import InfoDictionary
 
 
 @dataclass
-class RyeEnvironmentEpisodePlotter(BaseModel):
+class RyeEnvironmentEpisodePlotter:
     """ """
 
     _actions: List[Dict[str, float]]

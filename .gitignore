@@ -3,6 +3,7 @@
 .env
 .pytest_cache
 __pycache__
+rldiff.egg-info
 
 # Data
 data/*
