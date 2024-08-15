@@ -16,9 +16,13 @@ class RandomActionAgent:
     def __init__(self, action_space: gym.spaces.Box):
         self._action_space = action_space
 
-    def get_action(self) -> np.ndarray:
+    def get_action(self, state: np.ndarray = None) -> np.ndarray:
         """Pull any action from action space"""
-        return self._action_space.sample()
+        return (
+            self._action_space.sample()
+            if state is not None
+            else self._action_space.sample(state)
+        )
 
 
 def main() -> None:

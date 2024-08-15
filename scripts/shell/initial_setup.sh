@@ -1,7 +1,7 @@
 # Environment Setup
 cd ../../
 conda init
-conda env create -f rldiff.yml
+conda env create -f environment.yaml
 conda activate rldiff
 
 # Satori
