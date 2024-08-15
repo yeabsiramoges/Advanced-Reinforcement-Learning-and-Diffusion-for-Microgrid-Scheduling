@@ -1,4 +1,5 @@
 # Environment Setup
+cd ../../
 conda init
 conda env create -f rldiff.yml
 conda activate rldiff
