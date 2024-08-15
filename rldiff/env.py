@@ -163,8 +163,8 @@ class RyeEnv(gym.Env):
 
         # Start and end dates: format example -> 2020-01-01 13:00:00
         datetime_format = "%Y-%m-%d %H:%M:%S"
-        self._start_time_data = datetime.strptime(data.time.min(), datetime_format)
-        self._end_time_data = datetime.strptime(data.time.max(), datetime_format)
+        self._start_time_data = data.time.min()
+        self._end_time_data = data.time.max()
 
         self.reset()
 

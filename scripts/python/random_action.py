@@ -26,9 +26,9 @@ class RandomActionAgent:
 
 
 def main() -> None:
-    data = pd.read_csv(
+    data = ray.data.read_csv(
         join(dirname(abspath(join(__file__, "../../"))), "data/rye/train.csv")
-    )  # TODO: Convert to ray
+    ).to_pandas()
 
     env = RyeEnv(data)
     agent = RandomActionAgent(action_space=env.action_space)

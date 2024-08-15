@@ -8,3 +8,6 @@ rldiff.egg-info
 # Data
 data/*
 !data/README.md
+
+# Large Files
+pymgrid.ipynb

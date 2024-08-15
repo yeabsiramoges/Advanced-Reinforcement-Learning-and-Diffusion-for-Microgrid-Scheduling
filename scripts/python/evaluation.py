@@ -1,6 +1,4 @@
-import numpy as np
-import pandas as pd
-import gymnasium as gym
+import ray
 
 from datetime import datetime
 from os.path import abspath, dirname, join
@@ -12,9 +10,9 @@ from scripts.python.random_action import RandomActionAgent
 
 
 def main() -> None:
-    data = pd.read_csv(
+    data = ray.data.read_csv(
         join(dirname(abspath(join(__file__, "../../"))), "data/rye/test.csv")
-    )  # TODO: Convert to ray
+    ).to_pandas()
 
     env = RyeEnv(data)
     agent = RandomActionAgent(action_space=env.action_space)
